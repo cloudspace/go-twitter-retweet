@@ -1,0 +1,44 @@
+secure_string: &secure_string
+  param_type: 'String'
+  regex: '^.*$'
+  required: true
+  secure: true
+
+microservice:
+  spec_version: '2.0'
+  name: 'go-twitter-retweet'
+  description: "Retweet a tweet"
+  docker_image: 'cloudspace/go-twitter-retweet'
+  docker_image_tag: '0.0.3'
+  docker_hub_url: 'https://registry.hub.docker.com/u/cloudspace/go-twitter-retweet/'
+  repo_url: 'https://github.com/cloudspace/go-twitter-retweet'
+  category: 'Twitter'
+  tags: ['twitter', 'golang', 'go', 'client', 'retweet', 'tweet', 'tweets', 'hashtags', 'hashtag']
+  developer_name: 'cgmoore120'
+  developer_type: 'User'
+  published: true
+  command: "/go-twitter-retweet '[twitter_consumer_key]' '[twitter_consumer_secret]' '[twitter_access_token]' '[twitter_access_secret]' '[tweet_id]'"
+  inputs:
+    twitter_consumer_key:
+      <<: *secure_string
+      description: 'Twitter Consumer key'
+    twitter_consumer_secret:
+      <<: *secure_string
+      description: 'Twitter Consumer secret'
+    twitter_access_token:
+      <<: *secure_string
+      description: 'Twitter Access token'
+    twitter_access_secret:
+      <<: *secure_string
+      desceription: 'Twitter Access secret'
+    tweet_id:
+      param_type: 'String'
+      regex: '^.*$'
+      required: false
+      secure: false
+      description: 'id of Tweet to RT'
+    
+  outputs:
+    response:
+      param_type: 'String'
+      description: 'JSON hash of user and tweet metadata'
