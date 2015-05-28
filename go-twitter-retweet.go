@@ -4,7 +4,6 @@ import (
         "encoding/json"
         "fmt"
         "github.com/ChimeraCoder/anaconda"
-        "log"
         "os"
         "strconv"
 )
@@ -18,13 +17,13 @@ func main() {
   rt_id, err := strconv.ParseInt(id, 10, 64)
 
   if err != nil {
-    log.Fatalf("%s", err)
+    fmt.Println("%s", err)
   }
 
   rt, err := api.Retweet(rt_id, true)
 
   if err != nil {
-    log.Fatalf("%s", err)
+    fmt.Println("%s", err)
   }
 
   result_json,err := json.Marshal(rt)

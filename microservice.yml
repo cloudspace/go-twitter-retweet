@@ -9,7 +9,7 @@ microservice:
   name: 'go-twitter-retweet'
   description: "Retweet a tweet"
   docker_image: 'cloudspace/go-twitter-retweet'
-  docker_image_tag: '0.0.3'
+  docker_image_tag: '0.0.5'
   docker_hub_url: 'https://registry.hub.docker.com/u/cloudspace/go-twitter-retweet/'
   repo_url: 'https://github.com/cloudspace/go-twitter-retweet'
   category: 'Twitter'
@@ -32,11 +32,11 @@ microservice:
       <<: *secure_string
       desceription: 'Twitter Access secret'
     tweet_id:
-      param_type: 'String'
-      regex: '^.*$'
+      param_type: Numeric
+      regex: '^[0-9]+$'
       required: false
       secure: false
-      description: 'id of Tweet to RT'
+      description: 'tweet id to RT'
     
   outputs:
     response:
